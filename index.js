@@ -1,5 +1,6 @@
 // index.js start of file
-var express = require('express');
+var express = require('express')
+    , cors = require('cors');
 var multer = require('multer'),
         bodyParser = require('body-parser'),
         path = require('path');
@@ -8,6 +9,7 @@ var fs = require('fs')
 
 var app = new express();
 app.use(bodyParser.json());
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
