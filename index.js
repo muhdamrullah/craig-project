@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 });
 
 // index.js continued
-app.post('/', multer({ dest: './uploads/'}).single('upl'), function(req,res){
+app.post('/', multer({ dest: './uploads/'}).single('imgFile'), function(req,res){
         console.log(req.body); //form fields
         console.log(req.file);
         console.log(req.file.path);
@@ -34,5 +34,5 @@ app.post('/', multer({ dest: './uploads/'}).single('upl'), function(req,res){
 
 app.use(express.static(__dirname + '/uploads'));
 
-var port = 3000;
+var port = 10000;
 app.listen( port, function(){ console.log('listening on port '+port); } );
