@@ -4,8 +4,9 @@ var express = require('express')
 var multer = require('multer'),
         bodyParser = require('body-parser'),
         path = require('path');
-var oxfordEmotion = require("node-oxford-emotion")('')
-var fs = require('fs')
+var oxfordEmotion = require("node-oxford-emotion")('<insert here>');
+var fs = require('fs');
+var jsend = require('jsend');
 
 var app = new express();
 app.use(bodyParser.json());
@@ -24,17 +25,16 @@ app.post('/', multer({ dest: './uploads/'}).single('imgFile'), function(req,res)
         console.log(req.body); //form fields
         console.log(req.file);
         console.log(req.file.path);
-        var imageUrl = '<hosting-url>' + req.file.filename;
+        var imageUrl = '<insert here>' + req.file.filename;
         var emotion = oxfordEmotion.recognize("url", imageUrl, function(data) {
             console.log(data);
             var expression = data[0];
-            console.log(expression);
-            res.json(expression);
+            var jsendData = jsend.success(data);
+            res.json(jsendData).end();
             });
-        res.status(204).end();
 });
 
 app.use(express.static(__dirname + '/uploads'));
 
-var port = 10000;
+var port = 3000;
 app.listen( port, function(){ console.log('listening on port '+port); } );
