@@ -8,6 +8,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "jade": "^1.11.0",
+    "jsend": "^1.0.2",
     "multer": "^1.1.0",
     "node-oxford-emotion": "^1.0.4"
   },
